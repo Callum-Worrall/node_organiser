@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Workspaces</h1>
+<h1>Your Workspaces</h1>
 
 <table>
   <thead>
@@ -18,8 +18,21 @@
         <td><%= workspace.name %></td>
         <td><%= workspace.author.name %></td>
         <td><%= workspace.description %></td>
-        <td><%= link_to 'Edit', edit_workspace_path(workspace) %></td>
-        <td><%= link_to 'Destroy', workspace, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><a class="btn btn-outline-warning" href=<%= edit_workspace_path(workspace) %> role="button">Edit</a></td>
+        
+        <% if false %>
+          <td><a class="btn btn-outline-danger" href=<%= workspace %> role="button">Destroy</a></td>
+          <td><%= link_to 'Destroy', workspace, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+
+        <td>
+        <form class="button_to" method="delete" action=<%= workspace %>>
+          <button class="btn btn-outline-danger" data-confirm="Are you sure you want to delete?" type="submit">
+            <i class="fa fa-times">Destroy</i>
+          </button>
+        </form>
+        </td>
       </tr>
     <% end %>
   </tbody>
