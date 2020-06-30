@@ -10,6 +10,7 @@ class WorkspacesController < ApplicationController
   # GET /workspaces/1
   # GET /workspaces/1.json
   def show
+    @nodes = Node.all
   end
 
   # GET /workspaces/new
@@ -19,6 +20,7 @@ class WorkspacesController < ApplicationController
 
   # GET /workspaces/1/edit
   def edit
+    @nodes = Node.all
   end
 
   # POST /workspaces

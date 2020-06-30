@@ -1,6 +1,7 @@
 <h1>Editing Workspace</h1>
 
-<%= render 'form', workspace: @workspace %>
+<%= render 'form', workspace: @workspace, nodes: @nodes %>
 
-<%= link_to 'Show', @workspace %> |
+<%= render 'display_nodes', node: @nodes %>
+
 <%= link_to 'Back', workspaces_path %>

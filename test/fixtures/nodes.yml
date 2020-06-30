@@ -3,7 +3,9 @@
 one:
   name: MyString
   description: MyString
+  workspace: one
 
 two:
   name: MyString
   description: MyString
+  workspace: two
