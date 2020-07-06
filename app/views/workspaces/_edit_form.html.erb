@@ -17,17 +17,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :author_id %>
-    <%= form.collection_select(:author_id, Author.all, :id, :name ) %>
-  </div>
-
-  <div class="field">
     <%= form.label :description %>
     <%= form.text_field :description %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit value="Update Workspace" %>
   </div>
 
 <% end %>

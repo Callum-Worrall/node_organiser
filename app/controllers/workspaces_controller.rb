@@ -1,6 +1,9 @@
 class WorkspacesController < ApplicationController
-  before_action :set_workspaces, only: [:index, :show, :edit, :update, :destroy]
+    
   before_action :set_workspace, only: [:show, :edit, :update, :destroy]
+  
+  before_action :set_workspaces, only: [:index, :update, :destroy]
+
   before_action :set_nodes, only: [:index, :show, :new, :edit, :destroy]
 
   # GET /workspaces
@@ -21,12 +24,14 @@ class WorkspacesController < ApplicationController
 
   # GET /workspaces/1
   # GET /workspaces/1.json
-  def show
-    
+  def show    
   end
 
   # GET /workspaces/new
   def new
+    @workspace = Workspace.new
+    @authors = Author.all
+    @workspace.update_attribute(:author_id, @authors[0].id)
   end
 
   # GET /workspaces/1/edit

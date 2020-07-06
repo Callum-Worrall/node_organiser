@@ -25,6 +25,7 @@
         <% @workspaces.each do |workspace| %>
           <tr>
             <td><%= workspace.name %></td>
+
             <td><%= workspace.author.name %></td>
             <td><%= workspace.description %></td>
 
@@ -47,7 +48,7 @@
 
             <% end %>
 
-            <%= button_to('Destroy', workspace, form_class: "btn btn-outline-danger", method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
+            <%= button_to('Destroy', workspace, class: "btn btn-outline-danger", method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
 
 
             </td>
