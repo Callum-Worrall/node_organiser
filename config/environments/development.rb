@@ -61,4 +61,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.webpacker.check_yarn_integrity = ENV['SKIP_YARN'].nil?
+  # https://stackoverflow.com/questions/49610523/yarn-install-says-up-to-date-yet-cant-start-rails-console
 end
