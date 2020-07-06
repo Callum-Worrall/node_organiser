@@ -30,8 +30,6 @@ class WorkspacesController < ApplicationController
   # GET /workspaces/new
   def new
     @workspace = Workspace.new
-    @authors = Author.all
-    @workspace.update_attribute(:author_id, @authors[0].id)
   end
 
   # GET /workspaces/1/edit
@@ -43,6 +41,9 @@ class WorkspacesController < ApplicationController
   # POST /workspaces.json
   def create
     @workspace = Workspace.new(workspace_params)
+
+    @authors = Author.all
+    @workspace.update_attribute(:author_id, @authors[0].id)
 
     respond_to do |format|
       if @workspace.save
