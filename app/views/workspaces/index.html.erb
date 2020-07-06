@@ -8,8 +8,8 @@
   </button>
 </p>
 
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
+<%# <div class="collapse" id="collapseExample">
+  <div class="card card-body"> %>
     <table>
       <thead>
         <tr>
@@ -24,40 +24,23 @@
       <tbody>
         <% @workspaces.each do |workspace| %>
           <tr>
+          
+            <%# Details %>
             <td><%= workspace.name %></td>
-
             <td><%= workspace.author.name %></td>
             <td><%= workspace.description %></td>
-
             <td><%= @nodeCount[workspace.id] %></td>
 
-            <td><a class="btn btn-outline-warning" href=<%= edit_workspace_path(workspace.id) %> role="button">Edit</a></td>
-
-            <td>
-            <% if false %>
-
-              <td><a class="btn btn-outline-danger" href=<%= workspace %> role="button">Destroy</a></td>
-
-              <td><%= link_to 'Destroy', workspace, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-              <form class="button_to" method="delete" value= action=<%= workspace %>>
-                <button class="btn btn-outline-danger" data-confirm="Are you sure you want to delete?" type="submit">
-                  <i class="fa fa-times">Destroy</i>
-                </button>
-              </form>
-
-            <% end %>
-
-            <%= button_to('Destroy', workspace, class: "btn btn-outline-danger", method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
-
-
-            </td>
+            <%# Actions %>
+            <td><a class="btn btn-outline-warning" href=<%= edit_workspace_path(workspace.id) %> role="button">Edit</a></td>            
+            <td><%= button_to('Destroy', workspace, class: "btn btn-outline-danger", method: "delete", remote: true,
+              data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
-  </div>
-</div>
+  <%# </div>
+</div> %>
 
 <br>
 
