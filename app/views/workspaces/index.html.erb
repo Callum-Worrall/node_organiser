@@ -16,7 +16,8 @@
           <th>Name</th>
           <th>Author</th>
           <th>Description</th>
-          <th colspan="3"></th>
+          <th>Nodes</th>
+          <th colspan="4"></th>
         </tr>
       </thead>
 
@@ -26,6 +27,8 @@
             <td><%= workspace.name %></td>
             <td><%= workspace.author.name %></td>
             <td><%= workspace.description %></td>
+
+            <td><%= @nodeCount[workspace.id] %></td>
 
             <td><a class="btn btn-outline-warning" href=<%= edit_workspace_path(workspace.id) %> role="button">Edit</a></td>
 

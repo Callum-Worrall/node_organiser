@@ -1,21 +1,32 @@
 class WorkspacesController < ApplicationController
+  before_action :set_workspaces, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_workspace, only: [:show, :edit, :update, :destroy]
+  before_action :set_nodes, only: [:index, :show, :new, :edit, :destroy]
 
   # GET /workspaces
   # GET /workspaces.json
   def index
-    @workspaces = Workspace.all
+
+    @nodeCount = Hash.new
+
+    @workspaces.each { |workspace| @nodeCount[workspace.id] = count_nodes(@nodes, workspace.id) }
+
+  end
+
+  def count_nodes(nodes, workspace_id)
+    amount = 0
+    nodes.each { |node| amount += 1 if(node.workspace_id == workspace_id) }
+    return amount
   end
 
   # GET /workspaces/1
   # GET /workspaces/1.json
   def show
-    @nodes = Node.all
+    
   end
 
   # GET /workspaces/new
   def new
-    @workspace = Workspace.new
   end
 
   # GET /workspaces/1/edit
@@ -65,12 +76,22 @@ class WorkspacesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_workspace
-      @workspace = Workspace.find(params[:id])
-    end
+
+  def set_workspaces
+    @workspaces = Workspace.all
+  end
+
+  def set_workspace
+    @workspace = Workspace.find(params[:id])
+  end
+
+  def set_nodes
+    @nodes = Node.all
+  end
 
     # Only allow a list of trusted parameters through.
-    def workspace_params
-      params.require(:workspace).permit(:name, :author_id, :description)
-    end
+  def workspace_params
+    params.require(:workspace).permit(:name, :author_id, :description)
+  end
+
 end
