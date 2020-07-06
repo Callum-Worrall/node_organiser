@@ -1,6 +1,13 @@
 <h1>Editing Workspace</h1>
 
+<p>
+<b>Clickable Edit Name:</b>
+<%= best_in_place @workspace, :name, :as => :textarea %>
+</p>
+
 <%= render 'edit_form', workspace: @workspace, nodes: @nodes %>
+
+<%= best_in_place @workspace, :description, :as => :textarea %>
 
 <%= render 'display_nodes', node: @nodes %>
 

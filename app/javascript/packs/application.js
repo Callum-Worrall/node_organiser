@@ -17,3 +17,8 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "bootstrap"
+
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
