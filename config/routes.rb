@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root "workspaces#index"
 
   get    '/workspaces'     , to: 'workspaces#index'
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get    '/workspaces/:workspace_id/nodes/new' , to: 'nodes#new', as: "new_node"
   post   '/workspaces/:workspace_id/nodes/new' , to: 'nodes#create'
   get    '/workspaces/:workspace_id/nodes/:id' , to: 'nodes#edit', as: "edit_node"
+  # patch  '/workspaces/:workspace_id/nodes/:id' , to: 'nodes#update', as: "update_patch_node"
   patch  '/workspaces/:workspace_id/nodes/:id' , to: 'nodes#update', as: "update_patch_node"
   put    '/workspaces/:workspace_id/nodes/:id' , to: 'nodes#update', as: "update_node"
   delete '/workspaces/:workspace_id/nodes/:id' , to: 'nodes#destroy', as: "destroy_node"
