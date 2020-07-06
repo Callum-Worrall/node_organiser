@@ -59,4 +59,7 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.webpacker.check_yarn_integrity = ENV['SKIP_YARN'].nil?
+  # https://stackoverflow.com/questions/49610523/yarn-install-says-up-to-date-yet-cant-start-rails-console
 end
