@@ -30,6 +30,10 @@ class WorkspacesController < ApplicationController
   # GET /workspaces/new
   def new
     @workspace = Workspace.new
+    @workspace.user_id = params[:user_id]
+
+    # @authors = Author.all
+    # @workspace.update_attribute(:user_id, @authors[0].id)
   end
 
   # GET /workspaces/1/edit
@@ -42,12 +46,12 @@ class WorkspacesController < ApplicationController
   def create
     @workspace = Workspace.new(workspace_params)
 
-    @authors = Author.all
-    @workspace.update_attribute(:author_id, @authors[0].id)
+    @users = User.all
+    @workspace.update_attribute(:user_id, @users.find(params[:user_id]).id)
 
     respond_to do |format|
       if @workspace.save
-        format.html { redirect_to @workspace, notice: 'Workspace was successfully created.' }
+        format.html { redirect_to workspace_manager_path(@workspace.user_id), notice: 'Workspace was successfully created.' }
         format.json { render :show, status: :created, location: @workspace }
       else
         format.html { render :new }
@@ -97,7 +101,7 @@ class WorkspacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def workspace_params
-    params.require(:workspace).permit(:name, :author_id, :description)
+    params.require(:workspace).permit(:name, :description)
   end
 
 end

@@ -1,4 +1,4 @@
-<%= form_with(model: workspace, local: true) do |form| %>
+<%= form_with(model: workspace, url: new_workspace_path(workspace.user_id)) do |form| %>
   <% if workspace.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(workspace.errors.count, "error") %> prohibited this workspace from being created:</h2>

@@ -2,4 +2,4 @@
 
 <%= render 'new_form', workspace: @workspace %>
 
-<%= link_to 'Back', workspaces_path %>
+<%= link_to 'Back', workspace_manager_path(@workspace.user_id) %>
