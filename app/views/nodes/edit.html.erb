@@ -1,5 +1,5 @@
-<h1>Editing Node</h1>
+<h1>Editing <%=@node.name%></h1>
 
 <%= render 'update_form', node: @node %>
 
-<%= link_to 'Back', edit_workspace_path(@user.id, @node.workspace_id) %>
+<a class="btn btn-outline-secondary" href=<%= edit_workspace_path(@user.id, @node.workspace_id) %> role="button">Back</a>

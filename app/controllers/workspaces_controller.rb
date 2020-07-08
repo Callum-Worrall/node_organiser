@@ -55,7 +55,7 @@ class WorkspacesController < ApplicationController
   def update
     respond_to do |format|
       if @workspace.update(workspace_params)
-        format.html { redirect_to @workspace, notice: 'Workspace was successfully updated.' }
+        format.html { redirect_to update_patch_workspace_path(@workspace.user_id), notice: 'Workspace was successfully updated.' }
         format.json { render :show, status: :ok, location: @workspace }
       else
         format.html { render :edit }

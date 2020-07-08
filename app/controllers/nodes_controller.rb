@@ -38,7 +38,7 @@ class NodesController < ApplicationController
   def update
     respond_to do |format|
       if @node.update(node_params)
-        format.html { redirect_to edit_workspace_path(@user.id, @node.workspace_id), notice: 'Node was successfully updated.' }
+        format.html { redirect_to edit_node_path(@user.id, @node.workspace_id, @node.id), notice: 'Node was successfully updated.' }
         format.json { render :show, status: :ok, location: @node }
       else
         format.html { render :edit }
