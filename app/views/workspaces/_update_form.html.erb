@@ -1,4 +1,4 @@
-<%= form_with(model: workspace, local: true) do |form| %>
+<%= form_with(model: workspace, url: update_patch_workspace_path(workspace)) do |form| %>
   <% if workspace.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(workspace.errors.count, "error") %> prohibited this workspace from being saved:</h2>

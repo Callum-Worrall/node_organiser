@@ -1,14 +1,12 @@
 <h1>Editing Workspace</h1>
 
 <p>
-<b>Clickable Edit Name:</b>
-<%= best_in_place @workspace, :name, :as => :textarea %>
+<%# <b>Clickable Edit Name:</b> %>
+<%#= best_in_place @workspace, :name, :as => :textarea %>
 </p>
 
-<%= render 'edit_form', workspace: @workspace, nodes: @nodes %>
-
-<%= best_in_place @workspace, :description, :as => :textarea %>
+<%= render 'update_form', workspace: @workspace, nodes: @nodes %>
 
 <%= render 'display_nodes', node: @nodes %>
 
-<%= link_to 'Back', workspaces_path %>
+<%= link_to 'Back', workspace_manager_path(@workspace.user_id) %>

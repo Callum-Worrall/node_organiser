@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get    '/user/:user_id/workspaces/:id' , to: 'workspaces#edit', as: "edit_workspace"
   patch  '/user/:user_id/workspaces/:id' , to: 'workspaces#update', as: "update_patch_workspace"
   put    '/user/:user_id/workspaces/:id' , to: 'workspaces#update', as: "update_workspace"
-  delete '/user/:user_id/workspaces/:id' , to: 'workspaces#destroy', as: "workspace"
+  delete '/user/:user_id/workspaces/:id' , to: 'workspaces#destroy', as: "destroy_workspace"
 
   get    '/user/:user_id/workspaces/:workspace_id/nodes/new' , to: 'nodes#new', as: "nodes"
   get    '/user/:user_id/workspaces/:workspace_id/nodes/new' , to: 'nodes#new', as: "new_node"

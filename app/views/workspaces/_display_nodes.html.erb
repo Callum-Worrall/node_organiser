@@ -26,15 +26,15 @@
               <td><%= node.name %></td>
               <td><%= node.description %></td>
               <td><%= node.workspace_id %></td>
-              <td><%= link_to 'Edit', edit_node_path(@workspace.id, node) %></td>
-              <td><%= link_to 'Destroy', destroy_node_path(@workspace.id, node), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Edit', edit_node_path(@workspace.user_id, @workspace.id, node.id) %></td>
+              <td><%= link_to 'Destroy', destroy_node_path(@workspace.user_id, @workspace.id, node.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         <% end %>
       </tbody>
     </table>
 
-    <%= link_to 'New Node', new_node_path(@workspace) %>
+    <%= link_to 'New Node', new_node_path(@workspace.user_id, @workspace) %>
   </div>
 </div>
 

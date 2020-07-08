@@ -1,12 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Workspaces</h1>
-
-<p>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Show All
-  </button>
-</p>
+<h1><%=@user.name%>'s Workspaces</h1>
 
 <%# <div class="collapse" id="collapseExample">
   <div class="card card-body"> %>
@@ -32,8 +26,8 @@
             <td><%= @nodeCount[workspace.id] %></td>
 
             <%# Actions %>
-            <td><a class="btn btn-outline-warning" href=<%= edit_workspace_path(workspace.id) %> role="button">Edit</a></td>            
-            <td><%= button_to('Destroy', workspace, class: "btn btn-outline-danger", method: "delete", remote: true,
+            <td><a class="btn btn-outline-warning" href=<%= edit_workspace_path(workspace.user_id, workspace.id) %> role="button">Edit</a></td>            
+            <td><%= button_to('Destroy', destroy_workspace_path(workspace.user_id, workspace.id), class: "btn btn-outline-danger", method: "delete",
               data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %></td>
           </tr>
         <% end %>

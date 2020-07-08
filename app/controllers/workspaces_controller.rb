@@ -6,6 +6,8 @@ class WorkspacesController < ApplicationController
 
   before_action :set_nodes, only: [:index, :show, :new, :edit, :destroy]
 
+  before_action :set_user, only: [:index]
+
   # GET /workspaces
   # GET /workspaces.json
   def index
@@ -22,27 +24,17 @@ class WorkspacesController < ApplicationController
     return amount
   end
 
-  # GET /workspaces/1
-  # GET /workspaces/1.json
   def show    
   end
 
-  # GET /workspaces/new
   def new
     @workspace = Workspace.new
     @workspace.user_id = params[:user_id]
-
-    # @authors = Author.all
-    # @workspace.update_attribute(:user_id, @authors[0].id)
   end
 
-  # GET /workspaces/1/edit
   def edit
-    @nodes = Node.all
   end
 
-  # POST /workspaces
-  # POST /workspaces.json
   def create
     @workspace = Workspace.new(workspace_params)
 
@@ -60,8 +52,6 @@ class WorkspacesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /workspaces/1
-  # PATCH/PUT /workspaces/1.json
   def update
     respond_to do |format|
       if @workspace.update(workspace_params)
@@ -74,12 +64,10 @@ class WorkspacesController < ApplicationController
     end
   end
 
-  # DELETE /workspaces/1
-  # DELETE /workspaces/1.json
   def destroy
     @workspace.destroy
     respond_to do |format|
-      format.html { redirect_to workspaces_url, notice: 'Workspace was successfully destroyed.' }
+      format.html { redirect_to workspace_manager_path(@workspace.user_id), notice: 'Workspace was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -102,6 +90,10 @@ class WorkspacesController < ApplicationController
     # Only allow a list of trusted parameters through.
   def workspace_params
     params.require(:workspace).permit(:name, :description)
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
 end

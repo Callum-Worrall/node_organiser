@@ -2,4 +2,4 @@
 
 <%= render 'update_form', node: @node %>
 
-<%= link_to 'Back', edit_workspace_path(@node.workspace_id) %>
+<%= link_to 'Back', edit_workspace_path(@user.id, @node.workspace_id) %>
