@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "users#index"
 
   get    '/users'    , to: 'users#index', as: "user_manager"
+  get    '/login'    , to: 'users#login', as: "user_login"
   get    '/user/new' , to: 'users#new', as: "new_user"
   post   '/users'    , to: 'users#create'
   get    '/user/:id' , to: 'users#edit', as: "edit_user"
@@ -11,7 +12,8 @@ Rails.application.routes.draw do
   put    '/user/:id' , to: 'users#update'
   delete '/user/:id' , to: 'users#destroy', as: "user"
 
-  get    '/user/:user_id/workspaces'     , to: 'workspaces#index', as: "workspace_manager"
+  get    '/user/:user_id/workspaces'     , to: 'workspaces#workspace_manager', as: "workspace_manager"
+  # get    '/user/:user_id/workspaces'     , to: 'workspaces#index', as: "workspace_manager"
   get    '/user/:user_id/workspaces/new' , to: 'workspaces#new', as: "new_workspace"
   post   '/user/:user_id/workspaces/new' , to: 'workspaces#create'
   get    '/user/:user_id/workspaces/:id' , to: 'workspaces#edit', as: "edit_workspace"

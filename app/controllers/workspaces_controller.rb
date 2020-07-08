@@ -1,16 +1,16 @@
 class WorkspacesController < ApplicationController
     
-  before_action :set_workspace, only: [:show, :edit, :update, :destroy]
+  before_action :set_workspace, only: [:edit, :update, :destroy]
   
-  before_action :set_workspaces, only: [:index, :update, :destroy]
+  before_action :set_workspaces, only: [:workspace_manager, :update, :destroy]
 
-  before_action :set_nodes, only: [:index, :show, :new, :edit, :destroy]
+  before_action :set_nodes, only: [:workspace_manager, :new, :edit, :destroy]
 
-  before_action :set_user, only: [:index]
+  before_action :set_user, only: [:workspace_manager]
 
   # GET /workspaces
   # GET /workspaces.json
-  def index
+  def workspace_manager
 
     @nodeCount = Hash.new
 
@@ -22,9 +22,6 @@ class WorkspacesController < ApplicationController
     amount = 0
     nodes.each { |node| amount += 1 if(node.workspace_id == workspace_id) }
     return amount
-  end
-
-  def show    
   end
 
   def new

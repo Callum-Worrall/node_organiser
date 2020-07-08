@@ -11,34 +11,36 @@
     </div>
   <% end %>
 
+  <h6>* indicates fields required.</h6>
+
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <h5 type="label">Name*</h5>
+    <%= form.text_field :name, required: true  %>
   </div>
 
   <div class="field">
-    <%= form.label :date_of_birth %>
-    <%= form.date_select :date_of_birth %>
+    <h5 type="label">Date of Birth*</h5>
+    <%= form.date_select :date_of_birth, required: true, start_year: Date.today.year - 110, end_year: Date.today.year, default: Date.today %>
   </div>
 
   <div class="field">
-    <%= form.label :phone_number %>
+    <h5 type="label">Phone Number</h5>
     <%= form.number_field :phone_number %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <h5 type="label">Email*</h5>
+    <%= form.text_field :email, required: true  %>
   </div>
 
   <div class="field">
-    <%= form.label :address %>
+    <h5 type="label">Address</h5>
     <%= form.text_field :address %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password %>
+    <h5 type="label">Password*</h5>
+    <%= form.text_field :password, required: true %>
   </div>
 
   <div class="actions">
