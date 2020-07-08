@@ -1,35 +1,32 @@
 class NodesController < ApplicationController
   before_action :set_node, only: [:show, :edit, :update, :destroy]
 
-  # GET /nodes
-  # GET /nodes.json
+  before_action :set_user, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @nodes = Node.all
   end
 
-  # GET /nodes/1
-  # GET /nodes/1.json
   def show
   end
 
-  # GET /nodes/new
   def new
     @node = Node.new
     @node.workspace_id = params[:workspace_id]
   end
 
-  # GET /nodes/1/
   def edit
   end
 
-  # POST /nodes
-  # POST /nodes.json
   def create
     @node = Node.new(node_params)
 
+    @workspaces = Workspace.all
+    @node.update_attribute(:workspace_id, @workspaces.find(params[:workspace_id]).id)
+
     respond_to do |format|
       if @node.save
-        format.html { redirect_to edit_workspace_path(@node.workspace_id), notice: 'Node was successfully created.' }
+        format.html { redirect_to edit_workspace_path(@user.id, @node.workspace_id), notice: 'Node was successfully created.' }
         format.json { render :show, status: :created, location: @node }
       else
         format.html { render :new }
@@ -38,12 +35,10 @@ class NodesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /nodes/1
-  # PATCH/PUT /nodes/1.json
   def update
     respond_to do |format|
       if @node.update(node_params)
-        format.html { redirect_to edit_workspace_path(@node.workspace_id), notice: 'Node was successfully updated.' }
+        format.html { redirect_to edit_node_path(@user.id, @node.workspace_id, @node.id), notice: 'Node was successfully updated.' }
         format.json { render :show, status: :ok, location: @node }
       else
         format.html { render :edit }
@@ -52,12 +47,10 @@ class NodesController < ApplicationController
     end
   end
 
-  # DELETE /nodes/1
-  # DELETE /nodes/1.json
   def destroy
     @node.destroy
     respond_to do |format|
-      format.html { redirect_to edit_workspace_path(@node.workspace_id), notice: 'Node was successfully destroyed.' }
+      format.html { redirect_to edit_workspace_path(@user.id, @node.workspace_id), notice: 'Node was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,6 +59,10 @@ class NodesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_node
       @node = Node.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
     end
 
     # Only allow a list of trusted parameters through.

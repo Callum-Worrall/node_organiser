@@ -1,0 +1,34 @@
+<%= form_with(model: node, url: update_patch_node_path(@user.id, node)) do |form| %>
+  <% if node.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(node.errors.count, "error") %> prohibited this node from being saved:</h2>
+
+      <ul>
+        <% node.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :workspace_id %>
+    <%= form.text_field :workspace_id %>
+  </div>
+
+  <div class="actions">
+    <input class="btn btn-outline-success" type="submit" role="button" value="Save Changes">
+  </div>
+
+  
+<% end %>

@@ -1,7 +1,12 @@
-<h1>Editing Workspace</h1>
+<h1><%=@workspace.name%></h1>
 
-<%= render 'form', workspace: @workspace, nodes: @nodes %>
+<p>
+<%# <b>Clickable Edit Name:</b> %>
+<%#= best_in_place @workspace, :name, :as => :textarea %>
+</p>
+
+<%= render 'update_form', workspace: @workspace, nodes: @nodes %>
 
 <%= render 'display_nodes', node: @nodes %>
 
-<%= link_to 'Back', workspaces_path %>
+<a class="btn btn-outline-secondary" href=<%= workspace_manager_path(@workspace.user_id) %> role="button">Back</a>

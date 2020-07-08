@@ -1,5 +1,7 @@
 <h1>New Node</h1>
 
-<%= render 'form', node: @node %>
+<%= render 'new_form', node: @node %>
 
-<%= link_to 'Back', edit_workspace_path(@node.workspace_id) %>
+<%= link_to 'Back', edit_workspace_path(@user.id, @node.workspace_id) %>
+
+<%# <%= link_to 'Back', edit_workspace_path(@node.workspace_id) %>

@@ -1,30 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Workspaces</h1>
+<h1><%=@user.name%>'s Workspaces</h1>
 
-<table>
+<div class="card card-body">
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Author</th>
-      <th>Description</th>
+      <th><h4>Name</h4></th>
+      <th><h4>Description</h4></th>
+      <th><h4>Nodes</h4></th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @workspaces.each do |workspace| %>
-      <tr>
-        <td><%= workspace.name %></td>
-        <td><%= workspace.author.name %></td>
-        <td><%= workspace.description %></td>
-        <td><%= link_to 'Edit', edit_workspace_path(workspace) %></td>
-        <td><%= link_to 'Destroy', workspace, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if(workspace.user_id == @user.id) %>
+        <tr>        
+          <%# Details %>
+          <td><h5><%= workspace.name %></h5></td>
+          <td><%= workspace.description %></td>
+          <td><h5><%= @nodeCount[workspace.id] %></h5></td>
+
+          <%# Actions %>
+          <td><a class="btn btn-outline-warning" href=<%= edit_workspace_path(workspace.user_id, workspace.id) %> role="button">Edit</a></td>            
+          <td><%= button_to('Destroy', destroy_workspace_path(workspace.user_id, workspace.id), class: "btn btn-outline-danger", method: "delete",
+            data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
+<a class="btn btn-outline-success" href=<%= new_workspace_path %> role="button">New Workspace</a>
+</div>
 
 <br>
 
-<%= link_to 'New Workspace', new_workspace_path %>
+<a class="btn btn-outline-secondary" href=<%= user_manager_path %> role="button">Logout</a>
