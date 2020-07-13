@@ -28,7 +28,9 @@
       </li> %>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-    
+    <%if(user != nil)%>
+      <td><a class="btn btn-outline-warning" href=<%= edit_user_path(user) %> role="button"><%= user.name %></a></td>    
+    <%end%>
     </form>
     <%# <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -1,0 +1,49 @@
+<%= form_with(model: user, url: update_patch_user_path(user), local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h6>* indicates fields required.</h6>
+
+  <div class="field">
+    <h5 type="label">Name*</h5>
+    <%= form.text_field :name, required: true  %>
+  </div>
+
+  <div class="field">
+    <h5 type="label">Date of Birth*</h5>
+    <%= form.date_select :date_of_birth, required: true, start_year: Date.today.year - 110, end_year: Date.today.year, default: Date.today %>
+  </div>
+
+  <div class="field">
+    <h5 type="label">Phone Number</h5>
+    <%= form.number_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <h5 type="label">Email*</h5>
+    <%= form.text_field :email, required: true  %>
+  </div>
+
+  <div class="field">
+    <h5 type="label">Address</h5>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <h5 type="label">Password*</h5>
+    <%= form.text_field :password, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

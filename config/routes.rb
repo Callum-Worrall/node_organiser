@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get    '/user/new' , to: 'users#new', as: "new_user"
   post   '/users'    , to: 'users#create'
   get    '/user/:id' , to: 'users#edit', as: "edit_user"
-  patch  '/user/:id' , to: 'users#update'
-  put    '/user/:id' , to: 'users#update'
-  delete '/user/:id' , to: 'users#destroy', as: "user"
+  patch  '/user/:id' , to: 'users#update', as: "update_patch_user"
+  put    '/user/:id' , to: 'users#update'  , as: "update_put_user"
+  delete '/user/:id' , to: 'users#destroy', as: "destroy_user"
 
   get    '/user/:user_id/workspaces'     , to: 'workspaces#workspace_manager', as: "workspace_manager"
   # get    '/user/:user_id/workspaces'     , to: 'workspaces#index', as: "workspace_manager"

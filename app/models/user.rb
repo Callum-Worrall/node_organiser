@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :nodes, dependent: :destroy
+  has_many :workspaces, dependent: :destroy
 
   validates :name, presence: true
   validates :email, presence: true
